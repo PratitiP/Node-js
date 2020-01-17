@@ -15,10 +15,10 @@ si.on("data", input => {
     rows = parseInt(input.toString().trim());
     iCount++;
   } else if (iCount == 2) {
-    //console.log("Number of columns : ");
     cols = parseInt(input.toString().trim());
     noOfElements = rows * cols;
     console.log(noOfElements);
+    console.log(`Enter ${noOfElements} elements : `);
     iCount++;
   } else if (iCount <= (noOfElements + 2)) {
     i = parseInt(input.toString().trim());
@@ -35,11 +35,9 @@ si.on("data", input => {
     process.exit();
   }
 
-  //if(iCount==1) iCount++;
 });
 
 function storeIn2DArray() {
-  console.log(inputArr);
   let k = 0;
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -50,10 +48,12 @@ function storeIn2DArray() {
 }
 
 function print2DArray() {
-  console.log(array2D);
+  console.log("Printing 2D array");
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      console.log(array2D[i][j]);
+      //console.log(array2D[i][j]);
+      process.stdout.write(`${array2D[i][j]} `);
     }
+    console.log();
   }
 }

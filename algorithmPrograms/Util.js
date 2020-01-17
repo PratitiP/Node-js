@@ -77,11 +77,28 @@ class Util {
         }
         return false;
     }
+
+    static vendingMachine(amount){
+        let notes=[1000,500,100,50,10,5,2,1];
+        let i=0;
+        let noOfNotes=0;
+        for(i=0;i<notes.length;i++){
+            if(amount/notes[i]!=0)
+                {
+                    let tempNotes = Math.floor(amount / notes[i]);   
+                    noOfNotes = noOfNotes + tempNotes;
+                    amount = amount % notes[i];
+                }
+            }
+            console.log(`Minimum no of No of notes : ${noOfNotes}`)
+        return noOfNotes;
+
+    }
 }
 module.exports = Util;
 
-let arr=['hello','hi','bye','nice','good'];
-if(Util.binarySearch(arr,'nice'))
-    console.log(`item is present`);
-else
-    console.log(`item is not in list`);
+// let arr=['hello','hi','bye','nice','good'];
+// if(Util.binarySearch(arr,'nice'))
+//     console.log(`item is present`);
+// else
+//     console.log(`item is not in list`);

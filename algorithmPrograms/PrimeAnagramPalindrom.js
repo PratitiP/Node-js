@@ -34,6 +34,5 @@ standard_input.on('data', (input) => {
             }
         }
         process.exit();
-        process.exit();
     }
 });

@@ -42,7 +42,6 @@ class Util {
         console.log(`Sorted Integer List using bubble Sort : ${intArr} `);
     }
 
-    /*Function to sort array using insertion sort*/
     static insersionSort(arr) {
         let n = arr.length;
         for (let i = 1; i < n; i++) {
@@ -57,9 +56,32 @@ class Util {
         }
         console.log(`Sorted Integer List using Insertion sort : ${arr}`);
     }
+
+    static binarySearch(items, value){
+        items.sort();
+        console.log(items);
+        let left=0;
+        let right=items.length-1;
+        let middle=0;
+        while(left<right){
+            middle=Math.floor((left+right)/2);
+            
+            if(items[middle]==value) 
+                return true;
+            if(value>items[middle]){
+                left=middle+1;
+            }
+            else if(value<items[middle]){
+                right=middle-1; 
+            }
+        }
+        return false;
+    }
 }
 module.exports = Util;
 
-// strArr=['abd','xfsf','pqr','hij','abcde'];
-// Util.bubbleSort(strArr);
-
+let arr=['hello','hi','bye','nice','good'];
+if(Util.binarySearch(arr,'nice'))
+    console.log(`item is present`);
+else
+    console.log(`item is not in list`);

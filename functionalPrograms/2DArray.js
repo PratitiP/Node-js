@@ -21,7 +21,7 @@ si.on("data", input => {
     console.log(`Enter ${noOfElements} elements : `);
     iCount++;
   } else if (iCount <= (noOfElements + 2)) {
-    i = parseInt(input.toString().trim());
+    i = Number(input.toString().trim());
     inputArr.push(i);
     iCount++;
   } 
@@ -52,7 +52,7 @@ function print2DArray() {
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       //console.log(array2D[i][j]);
-      process.stdout.write(`${array2D[i][j]} `);
+      process.stdout.write(`${array2D[i][j]}\t`);
     }
     console.log();
   }

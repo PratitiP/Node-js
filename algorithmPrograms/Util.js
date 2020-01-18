@@ -29,7 +29,6 @@ class Util {
     }
 
     static bubbleSort(intArr) {
-        console.log(intArr);
         for (let i = 0; i < intArr.length; i++) {
             for (let j = i + 1; j < intArr.length; j++) {
                 if (intArr[i] > intArr[j]) {
@@ -39,7 +38,7 @@ class Util {
                 }
             }
         }
-        console.log(`Sorted Integer List using bubble Sort : ${intArr} `);
+        // console.log(`Sorted Integer List using bubble Sort : ${intArr} `);
     }
 
     static insersionSort(arr) {
@@ -54,23 +53,27 @@ class Util {
             }
             arr[j + 1] = key;
         }
-        console.log(`Sorted Integer List using Insertion sort : ${arr}`);
+        // console.log(`Sorted Integer List using Insertion sort : ${arr}`);
     }
 
     static binarySearch(items, value) {
-        items.sort();
-        console.log(items);
-        let left = 0;
-        let right = items.length - 1;
-        let middle = 0;
-        while (left < right) {
-            middle = Math.floor((left + right) / 2);
+        //sort number or strings
+        if(Number(value) || Number(value)==0){
+            items.sort((a,b) => a - b);
+        }
+        else
+            items.sort();
 
-            if (items[middle] == value)
+            let left = 0;
+        let right = items.length - 1;
+        while (left <= right) {
+            let middle = parseInt((left + right) / 2);
+
+            if (items[middle] == value) {
                 return true;
-            if (value > items[middle]) {
+            } else if (items[middle] < value) {
                 left = middle + 1;
-            } else if (value < items[middle]) {
+            } else {
                 right = middle - 1;
             }
         }
@@ -83,7 +86,7 @@ class Util {
         let noOfNotes = 0;
         for (i = 0; i < notes.length; i++) {
             if (amount / notes[i] != 0) {
-                let tempNotes = Math.floor(amount / notes[i]);
+                let tempNotes = parseInt(amount / notes[i]);
                 noOfNotes = noOfNotes + tempNotes;
                 amount = amount % notes[i];
             }
@@ -93,45 +96,40 @@ class Util {
 
     }
 
-    
 
-    static merge(leftArr, rightArr) {
-        var sortedArr = [];
-        while (leftArr.length && rightArr.length) {
-            if (leftArr[0] <= rightArr[0]) {
-                sortedArr.push(leftArr[0]);
-                leftArr = leftArr.slice(1)
-            } else {
-                sortedArr.push(rightArr[0]);
-                rightArr = rightArr.slice(1)
-            }
-        }
-        while (leftArr.length) sortedArr.push(leftArr.shift());
-        while (rightArr.length) sortedArr.push(rightArr.shift());
-        return sortedArr;
-    }
 
-    static mergesort(arr) {
-        if (arr.length < 2) {
-            return arr;
-        } else {
-            var midpoint = parseInt(arr.length / 2);
-            var leftArr = arr.slice(0, midpoint);
-            var rightArr = arr.slice(midpoint, arr.length);
-            return merge(mergesort(leftArr), mergesort(rightArr));
-        }
-    }
-    
+    // static merge(leftArr, rightArr) {
+    //     var sortedArr = [];
+    //     while (leftArr.length && rightArr.length) {
+    //         if (leftArr[0] <= rightArr[0]) {
+    //             sortedArr.push(leftArr[0]);
+    //             leftArr = leftArr.slice(1)
+    //         } else {
+    //             sortedArr.push(rightArr[0]);
+    //             rightArr = rightArr.slice(1)
+    //         }
+    //     }
+    //     while (leftArr.length) sortedArr.push(leftArr.shift());
+    //     while (rightArr.length) sortedArr.push(rightArr.shift());
+    //     return sortedArr;
+    // }
+
+    // static mergesort(arr) {
+    //     if (arr.length < 2) {
+    //         return arr;
+    //     } else {
+    //         var midpoint = parseInt(arr.length / 2);
+    //         var leftArr = arr.slice(0, midpoint);
+    //         var rightArr = arr.slice(midpoint, arr.length);
+    //         return merge(mergesort(leftArr), mergesort(rightArr));
+    //     }
+    // }
+
 
 
 }
 module.exports = Util;
 
-var unsortedArr = [2,5,6,36,45,21,86,52];
-console.log('This should be the sorted array!');
-    console.log(Util.mergesort(unsortedArr));
-// let arr=['hello','hi','bye','nice','good'];
-// if(Util.binarySearch(arr,'nice'))
-//     console.log(`item is present`);
-// else
-//     console.log(`item is not in list`);
+// var unsortedArr = [2,5,6,36,45,21,86,52];
+// console.log('This should be the sorted array!');
+// console.log(Util.mergesort(unsortedArr));

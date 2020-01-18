@@ -23,10 +23,9 @@ standard_input.on('data',(input)=>{
         strArr.shift();
         //sorting by reference
         strArray=strArr[0].split(' ');
-        while(strArray.length>total)
-            strArray.pop();
         console.log(strArray)
         util.insersionSort(strArray);
+        console.log(`Sorted String List using Insertion sort : ${strArray}`);
         process.exit();
     }
 });

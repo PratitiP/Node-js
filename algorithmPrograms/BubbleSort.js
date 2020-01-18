@@ -24,7 +24,7 @@ standard_input.on('data',(input)=>{
     if(intArr.length==(total+1)){
         intArr.shift();
         util.bubbleSort(intArr); //sorting by reference
-        // util.insersionSort(intArr);
+        console.log(`Sorted Integer List using Bubble sort : ${intArr}`);
         process.exit();
     }
 });

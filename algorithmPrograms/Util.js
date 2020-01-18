@@ -64,7 +64,7 @@ class Util {
         else
             items.sort();
 
-            let left = 0;
+        let left = 0;
         let right = items.length - 1;
         while (left <= right) {
             let middle = parseInt((left + right) / 2);
@@ -98,38 +98,37 @@ class Util {
 
 
 
-    // static merge(leftArr, rightArr) {
-    //     var sortedArr = [];
-    //     while (leftArr.length && rightArr.length) {
-    //         if (leftArr[0] <= rightArr[0]) {
-    //             sortedArr.push(leftArr[0]);
-    //             leftArr = leftArr.slice(1)
-    //         } else {
-    //             sortedArr.push(rightArr[0]);
-    //             rightArr = rightArr.slice(1)
-    //         }
-    //     }
-    //     while (leftArr.length) sortedArr.push(leftArr.shift());
-    //     while (rightArr.length) sortedArr.push(rightArr.shift());
-    //     return sortedArr;
-    // }
+   
+    static mergesort(arr) {
+        function merge(leftArr, rightArr) {
+        var sortedArr = [];
+        while (leftArr.length && rightArr.length) {
+            if (leftArr[0] <= rightArr[0]) {
+                sortedArr.push(leftArr[0]);
+                leftArr = leftArr.slice(1)
+            } else {
+                sortedArr.push(rightArr[0]);
+                rightArr = rightArr.slice(1)
+            }
+        }
+        while (leftArr.length) sortedArr.push(leftArr.shift());
+        while (rightArr.length) sortedArr.push(rightArr.shift());
+        return sortedArr;
+    }
 
-    // static mergesort(arr) {
-    //     if (arr.length < 2) {
-    //         return arr;
-    //     } else {
-    //         var midpoint = parseInt(arr.length / 2);
-    //         var leftArr = arr.slice(0, midpoint);
-    //         var rightArr = arr.slice(midpoint, arr.length);
-    //         return merge(mergesort(leftArr), mergesort(rightArr));
-    //     }
-    // }
+
+        if (arr.length < 2) {
+            return arr;
+        } else {
+            let midpoint = parseInt(arr.length / 2);
+            let leftArr = arr.slice(0, midpoint);
+            let rightArr = arr.slice(midpoint, arr.length);
+            return merge(Util.mergesort(leftArr), Util.mergesort(rightArr));
+        }
+    }
 
 
 
 }
 module.exports = Util;
 
-// var unsortedArr = [2,5,6,36,45,21,86,52];
-// console.log('This should be the sorted array!');
-// console.log(Util.mergesort(unsortedArr));

@@ -1,7 +1,9 @@
+const Queue = require('./Queue');
+const LinkedList = require('./LinkedList');
 
 let month = 0;
 let year = 0;
-let cal = [[]];
+let calQueue = new Queue();
 
 let input = process.argv.slice(2);
 
@@ -22,22 +24,29 @@ if (input.length != 0) {
 
 function getCalender() {
     let daysInMonth = getMonthDays();
-    day = firstDayOfMonth();
-    let week = [];       //4-5 weeks array in 2D cal array
-    date = 1;           //1-30
+    day=0;
+    dayOne = firstDayOfMonth();
+    let date = 1;
+    let ll = new LinkedList();
     while (date <= daysInMonth) {
         while (day <= 6 && date <= daysInMonth) {
-            week[day] = date;
-            date++;
+            if(day!=dayOne)
+                data={weekDay:'', date:''};     //to go to 1st date. otherwise printing is not in proper format
+            else{
+                data = { weekDay: day, date: date };
+                dayOne++;
+                date++;
+            }
+            ll.add(data);
             day++;
         }
-        cal.push(week);
-        week = [];
-        day = 0;
+        calQueue.enqueue(ll);
+        ll=new LinkedList();
+        day=0;dayOne=0;
     }
 }
 
-function printCalender() {
+function printCalender(){
     let monthStr = '';
     switch (month) {
         case 1: monthStr = 'JANUARY'; break;
@@ -57,30 +66,26 @@ function printCalender() {
     console.log(`----------------------------------------------------\n`);
     console.log(`                  ${monthStr} ${year}\n`);
     console.log(`Sun\tMon\tTue\tWed\tThur\tFri\tSat`);
-    week = 0;
-    let str = '';
-    while (week < cal.length) {
 
-        for (i = 0; i <= 6; i++) {
-            if (cal[week][i] == undefined)
-                str = str + "" + '\t'
-            else
-                str = str + cal[week][i] + '\t'
+    //Queue deque and linkedList pop(0) for printing.
+    let weekLL=new LinkedList();
+    let str='';
+    while(!calQueue.isEmpty()){
+        weekLL=calQueue.dequeue();
+        // weekLL.printList();
+        while(!weekLL.isEmpty()){
+            let data=weekLL.pop(0);
+            str = str + data.date + "\t";
         }
-        str = str + '\n'
-        week++;
+        str = str + "\n";
+        weekLL=new LinkedList();
     }
     console.log(str);
     console.log(`----------------------------------------------------\n`);
-
 }
 
 function firstDayOfMonth() {
-    let y0 = year - Math.floor((14 - month) / 12);
-    let x = y0 + Math.floor(y0 / 4) - Math.floor(y0 / 100) + Math.floor(y0 / 400);
-    let m0 = month + 12 * Math.floor((14 - month) / 12) - 2;
-    let d0 = (1 + x + Math.floor((31 * m0) / 12)) % 7;
-    return d0;
+    return new Date(`${month} 1 ${year}`).getDay();
 }
 
 function getMonthDays() {

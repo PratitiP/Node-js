@@ -1,33 +1,35 @@
+const LinkedList=require('./LinkedList');
+
 // Queue class 
-class Queue {
+class QueueLL {
     // Array is used to implement a Queue 
     constructor() {
-        this.items = [];
+        this.items = new LinkedList();
     }
 
     // Functions or queue abstract data types
 
     // adding element to the queue 
     enqueue(element) {
-        this.items.push(element);
+        this.items.add(element);
     }
 
     // removing element from the queue returns underflow when called on empty queue 
     dequeue() {
         if (this.isEmpty())
             return "Underflow";
-        return this.items.shift();
+        return this.items.pop(0);
     }
 
     // return true if the queue is empty. 
     isEmpty() {
-        return this.items.length == 0;
+        return this.items.size() == 0;
     }
 
     size(){
-        return this.items.length;
+        return this.items.size();
     }
 
 }
 
-module.exports = Queue;
+module.exports = QueueLL;

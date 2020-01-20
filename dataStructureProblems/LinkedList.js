@@ -128,7 +128,7 @@ class LinkedList {
     }
 
     size() {
-        console.log(this.size);
+        // console.log(this.size);
         return this.size;
     }
 
@@ -139,9 +139,10 @@ class LinkedList {
             str += curr.data + ",";
             curr = curr.next;
         }
-        // console.log(str);
+        console.log(str);
         return str;
     }
 }
 
 module.exports = LinkedList;
+

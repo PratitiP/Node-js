@@ -1,32 +1,25 @@
-// Get process.stdin as the standard input object.
-const standard_input = process.stdin;
-
 
 let inputArr = [];
 let month = 0;
 let year = 0;
 let cal = [[]];
-console.log(`\nEnter Month(1-12) year(yyyy) : `);
-standard_input.on('data', (data) => {
-    let input = data.toString().trim();
 
-    if (input.length != 0) {
-        inputArr = input.split(' ');
-        month = parseInt(inputArr[0]);
-        year = parseInt(inputArr[1])
-        if (Number.isInteger(month) && Number.isInteger(year)) {
-            if (month > 0 && month < 13) {
-                getCalender();
-                printCalender();
-                process.exit();
-            } else
-                console.log(`Enter correct month (1-12)`)
+let input = process.argv.slice(2);
+
+if (input.length != 0) {
+    month = parseInt(input[0]);
+    year = parseInt(input[1])
+    if (Number.isInteger(month) && Number.isInteger(year)) {
+        if (month > 0 && month < 13) {
+            getCalender();
+            printCalender();
         } else
-            console.log(`Wrong input for month or year. Please try again.`);
-    } else {
-        console.log(`No input. try again...`)
-    }
-});
+            console.log(`Enter correct month (1-12)`)
+    } else
+        console.log(`Wrong input for month or year. Please try again.`);
+} else {
+    console.log(`No input. Provide command-line arguments. Try again...`)
+}
 
 function getCalender() {
     let daysInMonth = getMonthDays();
@@ -46,20 +39,20 @@ function getCalender() {
 }
 
 function printCalender() {
-    let monthStr='';
+    let monthStr = '';
     switch (month) {
-        case 1:monthStr='JANUARY';break;
-        case 2:monthStr='FEBRUARY';break;
-        case 3:monthStr='MARCH';break;
-        case 4:monthStr='APRIL';break;
-        case 5:monthStr='MAY';break;
-        case 6:monthStr='JUNE';break;
-        case 7:monthStr='JULY';break;
-        case 8:monthStr='AUGUST';break;
-        case 9:monthStr='SEPTEMBER';break;
-        case 10:monthStr='OCTOBER';break;
-        case 11:monthStr='NOVEMBER';break;
-        case 12:monthStr='DECEMBER';break;
+        case 1: monthStr = 'JANUARY'; break;
+        case 2: monthStr = 'FEBRUARY'; break;
+        case 3: monthStr = 'MARCH'; break;
+        case 4: monthStr = 'APRIL'; break;
+        case 5: monthStr = 'MAY'; break;
+        case 6: monthStr = 'JUNE'; break;
+        case 7: monthStr = 'JULY'; break;
+        case 8: monthStr = 'AUGUST'; break;
+        case 9: monthStr = 'SEPTEMBER'; break;
+        case 10: monthStr = 'OCTOBER'; break;
+        case 11: monthStr = 'NOVEMBER'; break;
+        case 12: monthStr = 'DECEMBER'; break;
 
     }
     console.log(`----------------------------------------------------\n`);

@@ -1,4 +1,4 @@
-// Requiring fs module in which readFile function is defined. 
+// Requires fs module in which readFile function is defined. 
 const fs = require('fs');
 const util = require("./Util");
 

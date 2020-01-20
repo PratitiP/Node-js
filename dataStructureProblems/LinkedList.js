@@ -139,7 +139,7 @@ class LinkedList {
             str += curr.data + ",";
             curr = curr.next;
         }
-        console.log(str);
+        // console.log(str);
         return str;
     }
 }

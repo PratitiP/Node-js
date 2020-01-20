@@ -1,8 +1,8 @@
 // Requires fs module in which readFile function is defined. 
 const fs = require('fs');
-const LinkedList = require('./OrderedList');
+const OrderedList = require('./OrderedList');
 
-let ll = new LinkedList();
+let ll = new OrderedList();
 
 fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
     if (err) throw err;
@@ -19,7 +19,7 @@ fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
         }
     }
 
-    console.log("List from file flower.txt : ");
+    console.log("List from file numbers.txt : ");
     let llData=ll.printList();
     console.log(llData);
 

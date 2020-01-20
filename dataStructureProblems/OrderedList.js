@@ -1,3 +1,5 @@
+const LinkedList=require('./LinkedList');
+
 class Node {
     constructor(data) {
         this.data = data;
@@ -6,14 +8,11 @@ class Node {
 }
 
 // linkedlist class 
-class OrderedList {
+class OrderedList extends LinkedList{
     constructor() {
+        super();
         this.head = null;
         this.size = 0;
-    }
-
-    isEmpty() {
-        return this.size == 0;
     }
 
     // add(data) 
@@ -43,113 +42,6 @@ class OrderedList {
         this.size++;
     }
 
-    // insert data at the index of the list 
-    insertAt(data, index) {
-        if (index > 0 && index > this.size)
-            return false;
-        else {
-            // creates a new node 
-            let node = new Node(data);
-            let curr, prev;
-
-            curr = this.head;
-
-            if (index == 0) {
-                node.next = head;
-                this.head = node;
-            } else {
-                curr = this.head;
-                let it = 0;
-                while (it < index) {
-                    it++;
-                    prev = curr;
-                    curr = curr.next;
-                }
-                node.next = curr;
-                prev.next = node;
-            }
-            this.size++;
-        }
-    }
-
-    // removes an data from the specified location 
-    pop(index) {
-        if (index > 0 && index > this.size)
-            return -1;
-        else {
-            let curr, prev, it = 0;
-            curr = this.head;
-            prev = curr;
-
-            // deleting first data 
-            if (index === 0) {
-                this.head = curr.next;
-            } else {
-                while (it < index) {
-                    it++;
-                    prev = curr;
-                    curr = curr.next;
-                }
-                // remove the data 
-                prev.next = curr.next;
-            }
-            this.size--;
-            // return the remove data 
-            return curr.data;
-        }
-    }
-
-    // comparing data with current data if found then remove the and return true 
-    remove(data) {
-        let current = this.head;
-        let prev = null;
-
-        while (current != null) {
-            if (current.data === data) {
-                if (prev == null) {
-                    this.head = current.next;
-                } else {
-                    prev.next = current.next;
-                }
-                this.size--;
-                return current.data;
-            }
-            prev = current;
-            current = current.next;
-        }
-        return -1;
-    }
-
-    // finds the index of data 
-    indexOf(data) {
-        let count = 0;
-        let current = this.head;
-
-        while (current != null) {
-            if (current.data === data)
-                return count;
-            count++;
-            current = current.next;
-        }
-        // not found 
-        return -1;
-    }
-
-    size() {
-        console.log(this.size);
-        return this.size;
-    }
-
-    printList() {
-        let curr = this.head;
-        let str = "";
-        while (curr) {
-            str += curr.data + ",";
-            curr = curr.next;
-        }
-        // console.log(str);
-        return str;
-    }
 }
 
 module.exports = OrderedList;

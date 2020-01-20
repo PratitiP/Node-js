@@ -1,10 +1,10 @@
 // Requires fs module in which readFile function is defined. 
 const fs = require('fs');
-const LinkedList = require('./LinkedList');
+const LinkedList = require('./OrderedList');
 
 let ll = new LinkedList();
 
-fs.readFile(__dirname + '/flower.txt', (err, fileData) => {
+fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
     if (err) throw err;
 
     //read file and store data into unordered linked list.
@@ -12,10 +12,10 @@ fs.readFile(__dirname + '/flower.txt', (err, fileData) => {
     let substring = '';
     for (let i = 0; i < data.length; i++) {
         if (data[i] == ',') {
-            ll.add(substring);
+            ll.add(parseInt(substring));
             substring = '';
         } else {
-            substring = substring + data[i].toLowerCase();
+            substring = substring + data[i];
         }
     }
 
@@ -26,9 +26,9 @@ fs.readFile(__dirname + '/flower.txt', (err, fileData) => {
     // Get process.stdin as the standard input object.
     const standard_input = process.stdin;
 
-    console.log(`\nEnter a flower name to search in a List in flower.txt `);
+    console.log(`\nEnter a number name to search in a List in numbers.txt `);
     standard_input.on('data', (data) => {
-        let input = data.toString().trim().toLowerCase();
+        let input = parseInt(data.toString().trim());
         let newList='';
         if (input.length != 0) {
             if (ll.indexOf(input) != -1) {

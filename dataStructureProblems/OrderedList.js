@@ -6,7 +6,7 @@ class Node {
 }
 
 // linkedlist class 
-class LinkedList {
+class OrderedList {
     constructor() {
         this.head = null;
         this.size = 0;
@@ -20,17 +20,25 @@ class LinkedList {
     add(data) {
         // creates a new node 
         let node = new Node(data);
-        let current;
+        let current,prev;
 
         // if list is Empty add the data and make it head 
-        if (this.head == null)
+        if (this.head == null){
             this.head = node;
+        }
         else {
             current = this.head;
-            while (current.next) {
+            prev=this.head;
+            while (prev.next) {
+                if(data<current.data){
+                    node.next=current;
+                    prev.next = node;
+                    return;
+                }
+                prev = current;
                 current = current.next;
             }
-            current.next = node;
+            prev.next = node;
         }
         this.size++;
     }
@@ -47,7 +55,7 @@ class LinkedList {
             curr = this.head;
 
             if (index == 0) {
-                node.next = this.head;
+                node.next = head;
                 this.head = node;
             } else {
                 curr = this.head;
@@ -144,4 +152,4 @@ class LinkedList {
     }
 }
 
-module.exports = LinkedList;
+module.exports = OrderedList;

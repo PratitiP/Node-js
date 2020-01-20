@@ -2,7 +2,7 @@ class Stack {
 
     constructor() {
         this.count = 0;
-        this.storage = {};
+        this.storage = [];
     }
 
     push(value) {

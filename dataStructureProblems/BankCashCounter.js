@@ -28,7 +28,7 @@ standard_input.on('data', (data) => {
         main();
     }else if(input=='3'){
         showCounter();
-        process.exit();
+        process.exit();1
     }
     else{
         console.log(`Wrong option selected. `);

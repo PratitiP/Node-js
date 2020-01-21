@@ -20,8 +20,8 @@ function printPrimeNumbers() {
     // console.log(primeArr);
     let str = '';
     for (let i = 1; i <= 10; i++) {
-        str = str + "(" + `${i*100-99}` + "-" + `${i*100}` + ")" + "\t";
-        let arr = primeArr[i - 1];
+        str = str + "(" + `${i*100-99}` + "-" + `${i*100}` + ")" + " \t ";
+        let arr = primeArr[i];
         for (j = 0; j < arr.length; j++) {
             str = str + arr[j] + ", ";
         }

@@ -1,13 +1,7 @@
 class Util {
     static isAnagram(string1, string2) {
-        let string1Arr = string1
-            .toString()
-            .split("")
-            .sort();
-        let string2Arr = string2
-            .toString()
-            .split("")
-            .sort();
+        let string1Arr = string1.toString().split("").sort();
+        let string2Arr = string2.toString().split("").sort();
         if (JSON.stringify(string1Arr) == JSON.stringify(string2Arr)) {
             return true;
         }

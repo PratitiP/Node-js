@@ -40,18 +40,19 @@ standard_input.on('data', (data) => {
 function showCounter(){
     let totalDeposit=0;
     let totalWithdraw=0;
+    console.log(`\nAmounts Deposited at bank counter : `)
     while(!deposit.isEmpty()){
         let d=deposit.dequeue();
         totalDeposit=totalDeposit+d;
         console.log(`${d}`);
     }
     console.log(`Total amount Deposited at bank counter : ${totalDeposit}`)
-
+    console.log(`\nAmount Withdrawal at bank counter : `)
     while(!withdraw.isEmpty()){
         let d=withdraw.dequeue();
         totalWithdraw=totalWithdraw+d;
         console.log(`${d}`);
     }
     console.log(`Total amount Withdrawal at bank counter : ${totalWithdraw}`)
-
+    console.log(`\nCash counter is empty`)
 }

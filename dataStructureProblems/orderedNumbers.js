@@ -8,7 +8,7 @@ fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
     if (err) throw err;
 
     //read file and store data into unordered linked list.
-    let data = fileData.toString();
+    let data = fileData.toString()+',';
     let substring = '';
     for (let i = 0; i < data.length; i++) {
         if (data[i] == ',') {
@@ -40,6 +40,7 @@ fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
                 ll.add(input);
                 newList=ll.printList();
             }
+            console.log(newList);
             writeBackToFile(newList);
         } else
             console.log("Enter some string to search in file ");

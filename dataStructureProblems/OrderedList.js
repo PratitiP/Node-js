@@ -1,4 +1,4 @@
-const LinkedList=require('./LinkedList');
+const LinkedList = require('./LinkedList');
 
 class Node {
     constructor(data) {
@@ -8,7 +8,7 @@ class Node {
 }
 
 // linkedlist class 
-class OrderedList extends LinkedList{
+class OrderedList extends LinkedList {
     constructor() {
         super();
         this.head = null;
@@ -19,25 +19,38 @@ class OrderedList extends LinkedList{
     add(data) {
         // creates a new node 
         let node = new Node(data);
-        let current,prev;
+        let current, prev;
+
 
         // if list is Empty add the data and make it head 
-        if (this.head == null){
+        if (this.head == null) {
             this.head = node;
         }
         else {
             current = this.head;
-            prev=this.head;
-            while (prev.next) {
-                if(data<current.data){
-                    node.next=current;
-                    prev.next = node;
+            prev = this.head;
+            if (this.size == 1) {
+                if (data < current.data) {
+                    this.head = node;
+                    node.next = current;
+                    this.size++;
                     return;
                 }
-                prev = current;
-                current = current.next;
+                prev.next=node;
             }
-            prev.next = node;
+            else {
+                while (prev.next) {
+                    if (data < current.data) {
+                        node.next = current;
+                        prev.next = node;
+                        this.size++;
+                        return;
+                    }
+                    prev = current;
+                    current = current.next;
+                }
+                prev.next = node;
+            }
         }
         this.size++;
     }

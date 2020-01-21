@@ -23,7 +23,7 @@ standard_input.on('data', (data) => {
 });
 
 function getNoOfBST(){
-    console.log(inputArr);
+    // console.log(inputArr);
     inputArr.shift();
 
     for(let i=0 ; i<inputArr.length ; i++){
@@ -33,7 +33,7 @@ function getNoOfBST(){
 }
 
 function getCountBST(n){
-    count=factorial(2*n)/(factorial(n+1)*factorial(n));
+    count=Math.floor(factorial(2*n)/(factorial(n+1)*factorial(n)));
     return count;
 }
 

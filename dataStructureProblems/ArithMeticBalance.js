@@ -1,3 +1,4 @@
+
 const Stack=require('./Stack');
 
 function isPair(opening, closing)
@@ -23,6 +24,7 @@ standard_input.on('data',(data)=>{
     }else  
         console.log(`Empty input. Enter an arithmetic expression to validate`);
 });
+
 
 function isBalanced(){
 for(let i=0;i<arithmeticExp.length;i++){

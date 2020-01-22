@@ -10,6 +10,9 @@ standard_input.on('data',(input)=>{
     process.exit();
 });
 
+/**
+ * Get all permutations using recursion
+ */
 function getAllPermutationsRecusively(string) {
     let results = [];
   

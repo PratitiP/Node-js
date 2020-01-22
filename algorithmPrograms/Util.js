@@ -1,4 +1,12 @@
+/**
+ * @description all static functions for reusability
+ * @author Pratiti
+ * @version 1.0.1
+ */
 class Util {
+    /**
+     * Check if two arguments are anagram or not
+     */
     static isAnagram(string1, string2) {
         let string1Arr = string1.toString().split("").sort();
         let string2Arr = string2.toString().split("").sort();
@@ -8,6 +16,10 @@ class Util {
         return false;
     }
 
+    /**
+     * returns true is number isprime
+     * @param {*} n 
+     */
     static isPrime(n) {
         for (let i = 2; i <= n / 2; i++) {
             if (n % i == 0) return false;
@@ -15,6 +27,9 @@ class Util {
         return true;
     }
 
+    /**
+     * Check if two arguments are palindrom 
+     */
     static isPalindrome(n1, n2) {
         if (n1.toString().split("").reverse().join() == n2.toString().split("").join()) {
             return true;
@@ -22,6 +37,10 @@ class Util {
         return false;
     }
 
+    /**
+     * sort array in descending order - swaping
+     * o(n2)
+     */
     static bubbleSort(intArr) {
         for (let i = 0; i < intArr.length; i++) {
             for (let j = i + 1; j < intArr.length; j++) {
@@ -32,9 +51,12 @@ class Util {
                 }
             }
         }
-        // console.log(`Sorted Integer List using bubble Sort : ${intArr} `);
     }
 
+    /**
+     * sort using Insersion sort algorithm
+     * @param {*} arr 
+     */
     static insersionSort(arr) {
         let n = arr.length;
         for (let i = 1; i < n; i++) {
@@ -47,9 +69,13 @@ class Util {
             }
             arr[j + 1] = key;
         }
-        // console.log(`Sorted Integer List using Insertion sort : ${arr}`);
     }
 
+    /**
+     * sort an array. use modified sort if number
+     * otherwise use inbuilt sort
+     * then search dividing in two arrays
+     */
     static binarySearch(items, value) {
         //sort number or strings
         if(Number(value) || Number(value)==0){
@@ -74,6 +100,10 @@ class Util {
         return false;
     }
 
+    /**
+     * Vending machine returns minimum number of notes
+     * @param {*} amount 
+     */
     static vendingMachine(amount) {
         let notes = [1000, 500, 100, 50, 10, 5, 2, 1];
         let i = 0;
@@ -85,14 +115,14 @@ class Util {
                 amount = amount % notes[i];
             }
         }
-        console.log(`Minimum no of No of notes : ${noOfNotes}`)
         return noOfNotes;
 
     }
 
-
-
-   
+    /**
+     * merge sort with recussion
+     * @param {*} arr 
+     */
     static mergesort(arr) {
         function merge(leftArr, rightArr) {
         var sortedArr = [];

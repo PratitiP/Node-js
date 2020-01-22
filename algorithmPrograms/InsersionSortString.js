@@ -9,7 +9,6 @@ standard_input.setEncoding('utf-8');
 let total=1;
 let strArr=[];
 console.log("How many Strings you want in a list for Insersion sort : ");
-
 standard_input.on('data',(input)=>{
     let n=input.toString().trim();
     

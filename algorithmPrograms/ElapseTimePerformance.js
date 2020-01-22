@@ -13,6 +13,9 @@ let inputArr = [];
 
 main();
 
+/**
+ * Select menu display
+ */
 function main() {
     console.log("Select from following : ");
     console.log(`1.Binary Search for integers\n2.Binary serach for Strings\n3.Insersion Sort for numbers\n4.Inserson Sort for Strings\n5.Bubble Sort for numbers\n6.Bubble sort for Strings\n7.Exit`);
@@ -31,7 +34,9 @@ standard_input.on('data', (data) => {
                 console.log(`${Number(input)} Present in the list`);
             else
                 console.log(`${Number(input)} not in the list`);
-            problem = 0; part = 0; inputArr = [];
+            problem = 0;
+            part = 0;
+            inputArr = [];
 
             let stopTime = new Date();
             console.log(stopTime.getTime())
@@ -41,16 +46,15 @@ standard_input.on('data', (data) => {
 
             main();
             return;
-        }
-        else {
+        } else {
             console.log("Enter valid number for binary Search");
             return;
         }
     } else if (problem == 1) {
         inputArr = input.split(' ');
         //remove extra spaces bcoz they are getting converted to 0 for numbers and for string blanks
-        while(inputArr.indexOf('')!=-1){
-            inputArr.splice(inputArr.indexOf(''),1);
+        while (inputArr.indexOf('') != -1) {
+            inputArr.splice(inputArr.indexOf(''), 1);
         }
         let valid = validateNumberArray(inputArr);
         if (valid) {
@@ -75,7 +79,9 @@ standard_input.on('data', (data) => {
                 console.log(`${input} Present in the list`);
             else
                 console.log(`${input} not in the list`);
-            problem = 0; part = 0; inputArr = [];
+            problem = 0;
+            part = 0;
+            inputArr = [];
 
             let stopTime = new Date();
             console.log(stopTime.getTime())
@@ -100,12 +106,12 @@ standard_input.on('data', (data) => {
         } else {
             inputArr = input.split(' ');
             //remove extra spaces bcoz they are getting converted to 0 for numbers and for string blanks
-            while(inputArr.indexOf('')!=-1){
-                inputArr.splice(inputArr.indexOf(''),1);
+            while (inputArr.indexOf('') != -1) {
+                inputArr.splice(inputArr.indexOf(''), 1);
             }
             let valid = validateNumberArray(inputArr);
             if (problem == 4) {
-                valid = true;  //for strings insertion sort no need to validate.
+                valid = true; //for strings insertion sort no need to validate.
                 dictKey = 'INSERTION_SORT_S'
             } else
                 dictKey = 'INSERTION_SORT_N'
@@ -116,7 +122,9 @@ standard_input.on('data', (data) => {
                 util.insersionSort(inputArr);
                 //sorted list by reference
                 console.log(`Sorted List using Insertion sort : ${inputArr}`);
-                problem = 0; part = 0; inputArr = [];
+                problem = 0;
+                part = 0;
+                inputArr = [];
 
                 let stopTime = new Date();
                 console.log(stopTime.getTime())
@@ -141,13 +149,13 @@ standard_input.on('data', (data) => {
         } else {
             inputArr = input.split(' ');
             //remove extra spaces bcoz they are getting converted to 0 for numbers and for string blanks
-            while(inputArr.indexOf('')!=-1){
-                inputArr.splice(inputArr.indexOf(''),1);
+            while (inputArr.indexOf('') != -1) {
+                inputArr.splice(inputArr.indexOf(''), 1);
             }
             console.log(inputArr);
             let valid = validateNumberArray(inputArr);
             if (problem == 6) {
-                valid = true;  //for strings bubble sort no need to validate.
+                valid = true; //for strings bubble sort no need to validate.
                 dictKey = 'BUBBLE_SORT_S'
             } else
                 dictKey = 'BUBBLE_SORT_N'
@@ -158,7 +166,9 @@ standard_input.on('data', (data) => {
                 util.bubbleSort(inputArr);
                 //sorted list by reference
                 console.log(`Sorted List using Bubble sort : ${inputArr}`);
-                problem = 0; part = 0; inputArr = [];
+                problem = 0;
+                part = 0;
+                inputArr = [];
 
                 let stopTime = new Date();
                 console.log(stopTime.getTime())
@@ -216,8 +226,9 @@ standard_input.on('data', (data) => {
     }
 
 });
-
-//validate input array for numbers and convert to integer array.
+/**
+ * validate input array for numbers and convert to integer array.
+ */
 function validateNumberArray(inputArr) {
     for (let i = 0; i < inputArr.length; i++) {
         if (Number(inputArr[i]) || Number(inputArr[i]) == 0)
@@ -228,14 +239,17 @@ function validateNumberArray(inputArr) {
     return true;
 }
 
-function sortDict(obj){
+/**
+ * Sort Dictionary of elapsed times
+ */
+function sortDict(obj) {
     // convert object into array
-	var sortable=[];
-	for(var key in obj)
-		if(obj.hasOwnProperty(key))
-			sortable.push([key, obj[key]]); // each item is an array in format [key, value]
-	
-	// sort items by value
-	sortable.sort((a, b)=> b[1]-a[1]);
-    console.log(`Sorted Elapsed times in descending order: ${sortable}`);      // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
+    var sortable = [];
+    for (var key in obj)
+        if (obj.hasOwnProperty(key))
+            sortable.push([key, obj[key]]); // each item is an array in format [key, value]
+
+    // sort items by value
+    sortable.sort((a, b) => b[1] - a[1]);
+    console.log(`Sorted Elapsed times in descending order: ${sortable}`); // array in format [ [ key1, val1 ], [ key2, val2 ], ... ]
 }

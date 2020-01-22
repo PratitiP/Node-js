@@ -1,3 +1,11 @@
+/*
+* @file: OrderedList.js
+* @description: Inherited LinkedList and modified add 
+*               for ascending ordered list
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 const LinkedList = require('./LinkedList');
 
 class Node {

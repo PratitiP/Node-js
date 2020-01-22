@@ -1,4 +1,11 @@
-
+/*
+* @description: Read in arithmetic expression and write a stack class 
+*            to push open parentheses '{' and pop closed parentheses '}'
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 19/1/2020
+*/ 
 const Stack=require('./Stack');
 
 function isPair(opening, closing)

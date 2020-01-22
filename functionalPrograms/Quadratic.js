@@ -14,6 +14,9 @@ standard_input.on('data',(input)=>{
     }
 });
 
+/**
+ * Function to get Quadratic roots of a quadratic equation
+ */
 function getQuadraticRoots(){
     let a=inputArr[0];
     let b=inputArr[1];

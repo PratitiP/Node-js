@@ -1,3 +1,10 @@
+/*
+* @description: Store prime numbers in range using stack of linkedlist
+*               range in one dimension
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 const Stack=require('./Stack');
 const LinkedList=require('./LinkedList');
 
@@ -45,6 +52,7 @@ function getPrimeAnagramNumbers() {
     }
 }
 
+//print prime anagrams from stack with linkedlists
 function printPrimeAnagramNumbers(){
     let str='';
     while(!primeStack.isEmpty()){
@@ -54,6 +62,10 @@ function printPrimeAnagramNumbers(){
     console.log(`\nPrime Anagrams in reverse order using stack of linkedList : \n\n ${str}\n`);
 }
 
+/**
+ * @returns true is number is prime
+ * @param {*} number
+ */
 function isPrime(n) {
     for (let i = 2; i <= n / 2; i++) {
         if (n % i == 0) return false;
@@ -61,6 +73,11 @@ function isPrime(n) {
     return true;
 }
 
+/**
+ * @returns true is numberfs arfe anagrams
+ * @param {*} string1
+ * @param {*} string2
+ */
 function isAnagram(string1, string2) {
     let string1Arr = string1.toString().split("").sort();
     let string2Arr = string2.toString().split("").sort();

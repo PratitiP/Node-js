@@ -7,6 +7,7 @@ let fileArr = [];
 fs.readFile(__dirname + '/flower.txt', (err, data) => {
     if (err) throw err;
 
+    //store file strings in array
     fileArr = data.toString().split(',');
     fileArr.forEach((Element, index) => {
         fileArr[index] = Element.toLowerCase();

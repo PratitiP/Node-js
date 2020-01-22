@@ -1,8 +1,21 @@
+/*
+* @description: Create a Slot of 10 to store Chain of Numbers that belong to each Slot to
+*                efficiently search a number from a given set of number.
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 21/1/2020
+*/
 const fs = require('fs');
 const OrderedList = require('./OrderedList');
 
 let ll = new OrderedList();
 let hashTable = [];
+
+/**
+ * read file 
+ * in callback handle err and store filedata into hash table
+ */
 fs.readFile(__dirname + '/numbers.txt', (err, fileData) => {
     if (err) throw err;
 
@@ -46,7 +59,10 @@ function getUserInput() {
             console.log("Enter a number to search in file ");
     });
 }
-
+/**
+ * write modified hashed numbers to output.txt
+ * @param {*} newList 
+ */
 function writeBackToFile(newList){
     fs.writeFile(__dirname + '/output.txt', newList, (err) => { 
         if (err) throw err
@@ -55,6 +71,11 @@ function writeBackToFile(newList){
     }) 
 }
 
+/**
+ * serah a number in hash table
+ * It takes O(1) at best and O(n)in worst case
+ * @param {*} n 
+ */
 function searchInHashTable(n) {
     let hashIndex = hashFunction(n);
     let ll = getHashChain(hashIndex);
@@ -78,12 +99,19 @@ function searchInHashTable(n) {
     writeBackToFile(newList);
 }
 
+/**
+ * Hash function to get index
+ * @param {*} num 
+ */
 function hashFunction(num) {
     let hashIndex = num % 11;
     // console.log(`${hashIndex} - ${num}`);
     return hashIndex;
 }
 
+/**
+ * set/add in linkedList at index returned by hash function
+ */
 function setHashTable(hashIndex, num) {
     let ll=getHashChain(hashIndex);
 
@@ -100,6 +128,10 @@ function setHashTable(hashIndex, num) {
     }
 }
 
+/**
+ * @param {*} hashIndex 
+ * @return Linkedlist at index in hashTable
+ */
 function getHashChain(hashIndex) {
     return hashTable[hashIndex];
 }

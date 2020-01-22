@@ -1,3 +1,11 @@
+/*
+* @description: Calender using two stacks (reverse and again reverse) and linkedList
+*               one dimension - week 
+*               2nd dimension - dates
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 const Queue = require('./Queue');
 const LinkedList = require('./LinkedList');
 const Stack=require('./Stack');
@@ -24,6 +32,9 @@ if (input.length != 0) {
     console.log(`No input. Provide command-line arguments. Try again...`)
 }
 
+/**
+ * push linkedlists of dates to stack
+ */
 function getCalender() {
     let daysInMonth = getMonthDays();
     day=0;
@@ -97,10 +108,16 @@ function printCalender(){
     console.log(`----------------------------------------------------\n`);
 }
 
+/**
+ * @return day of date 1 of given month and year
+ */
 function firstDayOfMonth() {
     return new Date(`${month} 1 ${year}`).getDay();
 }
-
+/**
+ * @return number of days in a month
+ * include conditions for leap year
+ */
 function getMonthDays() {
     if (month % 2 == 0) {
         //check for Feb
@@ -117,6 +134,9 @@ function getMonthDays() {
     return0;
 }
 
+/**
+ * check if year is leap or not
+ */
 function isLeapYear() {
     if (year % 4 == 0) {
         if (year % 100 == 0) {

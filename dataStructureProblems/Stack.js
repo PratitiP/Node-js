@@ -1,3 +1,12 @@
+/*
+* @file: Stack.js
+* @description: Implementation of Stack with all methods
+*               like push,pop,peek
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 18/1/2020
+*/ 
 class Stack {
 
     constructor() {

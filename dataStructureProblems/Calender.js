@@ -1,4 +1,11 @@
-
+/*
+* @description: Calender using 2D array 
+*               one dimension - week 
+*               2nd dimension - dates
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 let month = 0;
 let year = 0;
 let cal = [[]];
@@ -20,6 +27,10 @@ if (input.length != 0) {
     console.log(`No input. Provide command-line arguments. Try again...`)
 }
 
+/**
+ * fill the 2D array with weeks in one dimensions
+ * dates in 2nd dimension
+ */
 function getCalender() {
     let daysInMonth = getMonthDays();
     day = firstDayOfMonth();
@@ -37,6 +48,9 @@ function getCalender() {
     }
 }
 
+/**
+ * print 2D array for calender
+ */
 function printCalender() {
     let monthStr = '';
     switch (month) {
@@ -75,6 +89,9 @@ function printCalender() {
 
 }
 
+/**
+ * @return day of date 1 of given month and year
+ */
 function firstDayOfMonth() {
     let y0 = year - Math.floor((14 - month) / 12);
     let x = y0 + Math.floor(y0 / 4) - Math.floor(y0 / 100) + Math.floor(y0 / 400);
@@ -83,6 +100,10 @@ function firstDayOfMonth() {
     return d0;
 }
 
+/**
+ * @return number of days in a month
+ * include conditions for leap year
+ */
 function getMonthDays() {
     if (month % 2 == 0) {
         //check for Feb
@@ -99,6 +120,9 @@ function getMonthDays() {
     return0;
 }
 
+/**
+ * check if year is leap or not
+ */
 function isLeapYear() {
     if (year % 4 == 0) {
         if (year % 100 == 0) {

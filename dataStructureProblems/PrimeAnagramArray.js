@@ -1,3 +1,11 @@
+/*
+* @description: Store prime numbers in range 
+*               Prime anagrams in one dimension
+*               prime but not anagram on other dimension
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 let primeArr = [[]];
 let primeInRange = [];
 let AP = [[]];
@@ -8,6 +16,7 @@ getPrimeNumbers();
 getPrimeAnagramNumbers();
 printPrimeAnagramNumbers();
 
+//store prime numbers in 2D array
 function getPrimeNumbers() {
     for (let i = 1; i <= 10; i++) {
         for (let j = i * 100 - 99; j <= i * 100; j += 2) {
@@ -19,6 +28,10 @@ function getPrimeNumbers() {
     }
 }
 
+/**
+ * store prime anagram in one dimension of array
+ * and others in 2nd dimension
+ */
 function getPrimeAnagramNumbers() {
 
     for (let i = 1; i <= 10; i++) {
@@ -49,7 +62,7 @@ function getPrimeAnagramNumbers() {
     // console.log(AnagramPrime.length + NotAnagramPrime.length);
 }
 
-
+//print prime anagrams from array
 function printPrimeAnagramNumbers() {
     let str = '';
     let y=''
@@ -66,6 +79,10 @@ function printPrimeAnagramNumbers() {
     console.log(str);
 }
 
+/**
+ * @returns true is number is prime
+ * @param {*} number
+ */
 function isPrime(n) {
     for (let i = 2; i <= n / 2; i++) {
         if (n % i == 0) return false;
@@ -73,6 +90,11 @@ function isPrime(n) {
     return true;
 }
 
+/**
+ * @returns true is numberfs arfe anagrams
+ * @param {*} string1
+ * @param {*} string2
+ */
 function isAnagram(string1, string2) {
     let string1Arr = string1.toString().split("").sort();
     let string2Arr = string2.toString().split("").sort();

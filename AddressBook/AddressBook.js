@@ -1,8 +1,10 @@
 /**
- * Purpose   : Address Book via object oriented, creating new address book,  
+ * @description   : Address Book via object oriented, creating new address book,  
  * adding, removing, editing address objects,
  * deleting, sorting and saving objects in json. 
  * @author   : Pratiti S
+ * @version 1.0
+ * @date : 21/1/2020
  */
 const fs = require("fs");
 const Person = require('./Person');

@@ -1,3 +1,10 @@
+/*
+* @description: Number of binary trees using n nodes
+*               calculated using a formula
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 let inputArr = [];
 let total = 0;
 console.log('Enter number of test cases for count(BST) : ')
@@ -32,11 +39,19 @@ function getNoOfBST(){
     }
 }
 
+/**
+ * Number of BST formed using n nodes
+ * @param {*} n 
+ */
 function getCountBST(n){
     count=Math.floor(factorial(2*n)/(factorial(n+1)*factorial(n)));
     return count;
 }
 
+/**
+ * @param {*} number to get factorial
+ * @retrun factorial
+ */
 function factorial(x){
     // validating the input
     x = parseInt(x, 10);

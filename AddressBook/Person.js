@@ -1,5 +1,5 @@
 /**
- * Purpose   : Model for person object.
+ * @description   : Model for person object.
  * @author   : Pratiti S
  */
 module.exports = class Person{

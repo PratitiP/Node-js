@@ -25,12 +25,21 @@ standard_input.on("data", n => {
 
 });
 
+/**
+ * check if alresy exits in array
+ */
 function checkDistinct(rand){
     return arr.indexOf(rand);
 }
 
+/**
+ * Function to generate random numbers between min and max 
+ * The maximum is exclusive and the minimum is inclusive
+ * @param {*} min 
+ * @param {*} max 
+ */
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min)) + min; 
 }

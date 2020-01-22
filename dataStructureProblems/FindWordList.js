@@ -1,3 +1,11 @@
+/*
+* @description: Read the Text from a file, split it into words and arrange it as Linked List.
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/
+
 // Requires fs module in which readFile function is defined. 
 const fs = require('fs');
 const LinkedList = require('./LinkedList');
@@ -47,6 +55,9 @@ fs.readFile(__dirname + '/flower.txt', (err, fileData) => {
 
 });
 
+/**
+ * write modified data to output file
+ */
 function writeBackToFile(newList){
     fs.writeFile(__dirname + '/output.txt', newList, (err) => { 
         if (err) throw err

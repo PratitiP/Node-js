@@ -1,4 +1,12 @@
-// Queue class 
+/*
+* @file: Queue.js
+* @description: Implementation of Queue with all methods
+*               like queue, enqueue, dequeue, isEmpty, size
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 19/1/2020
+*/ 
 class Queue {
     // Array is used to implement a Queue 
     constructor() {

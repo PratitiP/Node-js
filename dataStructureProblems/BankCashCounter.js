@@ -1,3 +1,10 @@
+/*
+* @description: Create Banking Cash Counter where people come in to deposit Cash and withdraw Cash.
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 19/1/2020
+*/
 const Queue = require('./Queue');
 
 function main(){
@@ -37,6 +44,10 @@ standard_input.on('data', (data) => {
 
 });
 
+/**
+ * deque to read cash counter 
+ * FIFO - First In First Out
+ */
 function showCounter(){
     let totalDeposit=0;
     let totalWithdraw=0;

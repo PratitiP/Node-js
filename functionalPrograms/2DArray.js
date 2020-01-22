@@ -1,3 +1,4 @@
+// Get process.stdin as the standard input object.
 const si = process.stdin;
 si.setEncoding("utf-8");
 
@@ -37,6 +38,9 @@ si.on("data", input => {
 
 });
 
+/**
+ * store elements in 2D array
+ */
 function storeIn2DArray() {
   let k = 0;
   for (let i = 0; i < rows; i++) {
@@ -47,6 +51,9 @@ function storeIn2DArray() {
   }
 }
 
+/**
+ * Print elements in 2D array
+ */
 function print2DArray() {
   console.log("Printing 2D array");
   for (let i = 0; i < rows; i++) {

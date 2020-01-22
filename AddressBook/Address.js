@@ -1,5 +1,5 @@
 /**
- * Purpose   : Model class for address object.
+ * @description   : Model class for address object.
  * @author   : Pratiti S
  */
 module.exports = class Address{

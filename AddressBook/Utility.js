@@ -1,11 +1,14 @@
 /**
- * Purpose   : All functions and utilities for reuse.
+ * @description   : All functions and utilities for reuse.
  * @author   : Pratiti S
  */
 
 var fs = require('fs');
 var readline = require('readline');
 
+/**
+ * read all the Address file names having extension .json
+ */
 exports.readdir = function () {
     let regexExtension = /[^\\]*\.json$/;
     let jsonFilesArr = [];

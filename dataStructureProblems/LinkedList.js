@@ -1,3 +1,12 @@
+/*
+* @file: LinkedList.js
+* @description: Implementation of linked list with all methods
+*               like add,removeFrom,removeElement,addAtfirst,size
+*
+* @author: pratiti
+* @version: 1.0
+* @date: 20/1/2020
+*/ 
 class Node {
     constructor(data) {
         this.data = data;

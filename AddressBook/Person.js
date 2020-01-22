@@ -34,6 +34,7 @@ module.exports = class Person{
         this.phoneNumber = phoneNumber;
     }
     toString(){
-        return ('\n\tFirst Name\t:\t'+this.firstName+'\n\tLast Name\t:\t'+this.lastName+'\n\tAddress\t\t'+this.address+'\n\tPhone Number\t:\t'+this.phoneNumber);
+        return (this.firstName+' '+this.lastName+'\t'+this.address+this.phoneNumber+'\n');
+        // return ('\n\tFirst Name\t:\t'+this.firstName+'\n\tLast Name\t:\t'+this.lastName+'\n\tAddress\t\t'+this.address+'\n\tPhone Number\t:\t'+this.phoneNumber);
     }
 }

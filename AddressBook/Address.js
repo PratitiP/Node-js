@@ -27,6 +27,6 @@ module.exports = class Address{
         this.zip = zip;
     }
     toString(){
-        return ('\n\t\tcity\t:\t'+this.city+'\n\t\tstate\t:\t'+this.state+'\n\t\tzip\t:\t'+this.zip);
+        return (this.city+' , '+this.state+' , '+this.zip+'\t');
     }
 }

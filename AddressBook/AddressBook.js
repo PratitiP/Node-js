@@ -30,7 +30,7 @@ menu = () => {
             filesArray.forEach(element => {
                 console.log(element);
             });
-            input.question('\nEnter the name of new address book ', (newAddressBook) => {
+            input.question('\nEnter the name of new address book : ', (newAddressBook) => {
                 addressBookName = newAddressBook;
                 newAddressBookCount = 0;
                 filesArray.forEach(element => {
@@ -50,7 +50,7 @@ menu = () => {
             menu();
         } else if (choice == '2') {
             checkingFiles();
-            input.question('Enter the name of the address book ', (newAddressBookName) => {
+            input.question('Enter the name of the address book : ', (newAddressBookName) => {
                 addressBookCount = 0;
                 addressBookName = newAddressBookName;
                 filesArray.forEach(element => {
@@ -81,34 +81,6 @@ menu = () => {
 }
 
 /**
- * @description reading all the json files or different address books.
- */
-checkingFiles = () => {
-   
-}
-
-/**
- * @description reading data from a json file.
- */
-readData = (addressBookName) => {
-    var obj = utility.read(fileSaveAddress + addressBookName + '.json');
-    obj.forEach(elements => {
-        person = new Person();
-        address = new Address();
-        person.setFirstName(elements.firstName);
-        person.setLastName(elements.lastName);
-        address.setCity(elements.address.city);
-        address.setState(elements.address.state);
-        address.setZip(elements.address.zip);
-        person.setAddress(address)
-        person.setPhoneNumber(elements.phoneNumber);
-        array.push(person);
-
-    });
-    return true;
-}
-
-/**
  * @description Inner menu of address book after opening an address book.
  */
 innerMenu = () => {
@@ -117,12 +89,12 @@ innerMenu = () => {
             console.log('add');
             person = new Person();
             address = new Address();
-            input.question('Enter first name ', (firstName) => {
-                input.question('Enter last name ', (lastName) => {
-                    input.question('Enter city ', (city) => {
-                        input.question('Enter state ', (state) => {
-                            input.question('Enter zip ', (zip) => {
-                                input.question('Enter phone number ', (phoneNumber) => {
+            input.question('Enter first name : ', (firstName) => {
+                input.question('Enter last name : ', (lastName) => {
+                    input.question('Enter city : ', (city) => {
+                        input.question('Enter state : ', (state) => {
+                            input.question('Enter zip : ', (zip) => {
+                                input.question('Enter phone number : ', (phoneNumber) => {
                                     person.setFirstName(firstName);
                                     person.setLastName(lastName);
                                     person.setPhoneNumber(phoneNumber);
@@ -132,6 +104,7 @@ innerMenu = () => {
                                     person.setAddress(address);
                                     array.push(person);
                                     console.log(person.toString());
+                                    console.log(`Save before exit. Otherwise data will be lost`);
                                     innerMenu();
                                 })
                             })
@@ -141,30 +114,33 @@ innerMenu = () => {
             })
 
         } else if (innerChoice == '2') {
-            input.question('Enter the first name of person for editing ', (name) => {
+            input.question('Enter the first name of person for editing : ', (name) => {
                 var count = 0;
                 array.forEach(element => {
                     if (element.firstName == name) {
                         input.question('1. Edit last name\n2. Edit Address\n3. Edit phone number ', (editChoice) => {
                             if (editChoice == '1') {
-                                input.question('Enter new last name ', (lastName) => {
+                                input.question('Enter new last name : ', (lastName) => {
                                     element.setLastName(lastName);
+                                    console.log(`Save before exit. Otherwise data will be lost`);
                                     innerMenu();
                                 })
                             } else if (editChoice == '2') {
-                                input.question('Enter city ', (city) => {
-                                    input.question('Enter state ', (state) => {
-                                        input.question('Enter zip ', (zip) => {
+                                input.question('Enter city : ', (city) => {
+                                    input.question('Enter state : ', (state) => {
+                                        input.question('Enter zip : ', (zip) => {
                                             element.address.setCity(city);
                                             element.address.setState(state);
                                             element.address.setZip(zip);
+                                            console.log(`Save before exit. Otherwise data will be lost`);
                                             innerMenu();
                                         })
                                     })
                                 })
                             } else if (editChoice == '3') {
-                                input.question('Enter phone number ', (phoneNumber) => {
+                                input.question('Enter phone number : ', (phoneNumber) => {
                                     element.setPhoneNumber(phoneNumber);
+                                    console.log(`Save before exit. Otherwise data will be lost`);
                                     innerMenu();
                                 })
                             }
@@ -179,23 +155,27 @@ innerMenu = () => {
 
         } else if (innerChoice == '3') {
             if (array.length != 0) {
-                input.question('Enter the first name to delete ', (name) => {
+                input.question('Enter the first name to delete : ', (name) => {
                     for (var i = 0; i < array.length; i++) {
                         if (array[i].firstName == name) {
                             array.splice(i, 1);
                         }
                     }
+                    console.log(`Save before exit. Otherwise data will be lost`);
                     innerMenu();
                 })
             } else {
-                console.log('No records found to delete');
+                console.log('No records to delete');
                 innerMenu();
             }
 
         } else if (innerChoice == '4') {
-            array.forEach(element => {
-                console.log(element.toString());
-            });
+            if(array.length==0)
+                console.log(`No records found `);
+            else
+                array.forEach(element => {
+                    console.log(element.toString());
+                });
             innerMenu();
         } else if (innerChoice == '5') {
             array.sort(function (a, b) {
@@ -228,5 +208,35 @@ innerMenu = () => {
         }
     })
 }
+
+/**
+ * @description reading all the json files or different address books.
+ */
+checkingFiles = () => {
+    filesArray=utility.readdir();
+    console.log(filesArray);
+ }
+ 
+ /**
+  * @description reading data from a json file.
+  */
+ readData = (addressBookName) => {
+     array=[];        //clear preveous data in array even if it is not saved
+     var obj = utility.read(fileSaveAddress + addressBookName + '.json');
+     obj.forEach(elements => {
+         person = new Person();
+         address = new Address();
+         person.setFirstName(elements.firstName);
+         person.setLastName(elements.lastName);
+         address.setCity(elements.address.city);
+         address.setState(elements.address.state);
+         address.setZip(elements.address.zip);
+         person.setAddress(address)
+         person.setPhoneNumber(elements.phoneNumber);
+         array.push(person);
+     });
+     return true;
+ }
+
 checkingFiles();
 menu();

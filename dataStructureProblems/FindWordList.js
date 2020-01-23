@@ -9,6 +9,9 @@
 // Requires fs module in which readFile function is defined. 
 const fs = require('fs');
 const LinkedList = require('./LinkedList');
+const util=require("util");
+
+const writeFile=util.promisify(fs.writeFile);
 
 let ll = new LinkedList();
 
@@ -58,11 +61,14 @@ fs.readFile(__dirname + '/flower.txt', (err, fileData) => {
 /**
  * write modified data to output file
  */
-function writeBackToFile(newList){
-    fs.writeFile(__dirname + '/output.txt', newList, (err) => { 
-        if (err) throw err
-        else console.log("New List written back to output.txt file");
-                
-        process.exit();
-    }) 
+async function writeBackToFile(newList){
+    try{
+        await writeFile(__dirname + '/output.txt', newList)
+        console.log("Write back successful");
+    }catch(err){
+        console.log(err);
+    }
+    process.exit();
 }
+
+

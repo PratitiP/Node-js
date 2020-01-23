@@ -14,7 +14,7 @@ const utility = require('./Utility');
 let person = new Person();
 let address = new Address();
 let input = utility.userInput();
-let array = [];
+let addressBook = [];
 let filesArray = [];
 let addressBookCount = 0;
 let newAddressBookCount = 0;
@@ -35,7 +35,8 @@ menu = () => {
     input.question('1. New Address Book\n2. Open existing Address Book\n3. Exit \n', (choice) => {
         if (choice == '1') {
             console.log();
-            array = [];
+            addressBook = [];
+            let fileStr='';
             filesArray.forEach((fileName)=>{
                 let name=fileName.split('.')
                 fileStr=fileStr+name[0]+'\t';
@@ -48,16 +49,15 @@ menu = () => {
 
                 if(!pattern.fileName.test(newAddressBook)){
                     console.log(`Invalid filename for new Address book. Try again...`);
-                    menu();
+                    menu();return;
                 }else{
                 filesArray.forEach(element => {
-
                     if (element == newAddressBook + '.json') {
                         newAddressBookCount++;
                     }
                 });
                 if (newAddressBookCount == 0) {
-                    utility.write(fileSaveAddress + newAddressBook + '.json', array);
+                    utility.write(fileSaveAddress + newAddressBook + '.json', addressBook);
                     menu();
                 } else {
                     console.log('Address book named ' + newAddressBook + '.json already exists');
@@ -136,7 +136,7 @@ innerMenu = () => {
                                     address.setState(state);
                                     address.setZip(zip);
                                     person.setAddress(address);
-                                    array.push(person);
+                                    addressBook.push(person);
                                     console.log(person.toString());
                                     console.log(`Save before exit. Otherwise data will be lost`);
                                     innerMenu();
@@ -151,7 +151,7 @@ innerMenu = () => {
         } else if (innerChoice == '2') {
             input.question('Enter the first name of person for editing : ', (name) => {
                 var count = 0;
-                array.forEach(element => {
+                addressBook.forEach(element => {
                     if (element.firstName == name) {
                         input.question('1. Edit last name\n2. Edit Address\n3. Edit phone number\n ', (editChoice) => {
                             if (editChoice == '1') {
@@ -195,12 +195,12 @@ innerMenu = () => {
             })
 
         } else if (innerChoice == '3') {
-            if (array.length != 0) {
+            if (addressBook.length != 0) {
                 input.question('Enter the first name to delete : ', (name) => {
                     let flagDelete = false;
-                    for (var i = 0; i < array.length; i++) {
-                        if (array[i].firstName == name) {
-                            array.splice(i, 1);
+                    for (var i = 0; i < addressBook.length; i++) {
+                        if (addressBook[i].firstName == name) {
+                            addressBook.splice(i, 1);
                             flagDelete = true;
                         }
                     }
@@ -216,34 +216,34 @@ innerMenu = () => {
             }
 
         } else if (innerChoice == '4') {
-            if (array.length == 0)
+            if (addressBook.length == 0)
                 console.log(`No records found `);
             else{
                 console.log(`-------------------------------------------------------------------------`);
                 console.log(`FirstName\tLastName\tCity , State , zip\tPhoneNumber`);
                 console.log(`-------------------------------------------------------------------------`);
-                array.forEach(element => {
+                addressBook.forEach(element => {
                     console.log(element.toString());
                 });
             }
             innerMenu();
         } else if (innerChoice == '5') {
-            array.sort(function (a, b) {
+            addressBook.sort(function (a, b) {
                 return (a.firstName > b.firstName) ? 1 : ((b.firstName > a.firstName) ? -1 : 0);
             });
             innerMenu();
         } else if (innerChoice == '6') {
-            array.sort(function (a, b) {
+            addressBook.sort(function (a, b) {
                 return (a.address.zip > b.address.zip) ? 1 : ((b.address.zip > a.address.zip) ? -1 : 0);
             });
             innerMenu();
         } else if (innerChoice == '7') {
             console.log('save');
-            utility.write(fileSaveAddress + addressBookName + '.json', array);
+            utility.write(fileSaveAddress + addressBookName + '.json', addressBook);
             innerMenu();
         } else if (innerChoice == '8') {
             input.question('Enter the new file name ', (newAddressBook) => {
-                utility.write(fileSaveAddress + newAddressBook + '.json', array);
+                utility.write(fileSaveAddress + newAddressBook + '.json', addressBook);
                 innerMenu();
             })
         } else if (innerChoice == '9') {
@@ -269,7 +269,7 @@ checkingFiles = () => {
  * @description reading data from a json file.
  */
 readData = (addressBookName) => {
-    array = [];        //clear preveous data in array even if it is not saved
+    addressBook = [];        //clear preveous data in addressBook even if it is not saved
     var obj = utility.read(fileSaveAddress + addressBookName + '.json');
     obj.forEach(elements => {
         person = new Person();
@@ -281,7 +281,7 @@ readData = (addressBookName) => {
         address.setZip(elements.address.zip);
         person.setAddress(address)
         person.setPhoneNumber(elements.phoneNumber);
-        array.push(person);
+        addressBook.push(person);
     });
     return true;
 }

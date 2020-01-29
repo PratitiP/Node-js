@@ -6,7 +6,7 @@
  * @date    : 22/1/2020
  */
 module.exports = class Human {
-    constructor(name, id, specialization, availability, numberOfPatients) {
+    constructor(name, id) {
         this.name = name;
         this.id = id;
     }

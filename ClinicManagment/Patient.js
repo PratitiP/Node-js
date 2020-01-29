@@ -8,7 +8,7 @@
 
 const Human = require('./Human');
 
-module.exports = class Patient{
+module.exports = class Patient extends Human{
     constructor(name, id, phoneNumber, age){
         super(name,id);
         this.phoneNumber = phoneNumber;

@@ -10,10 +10,7 @@ class Util {
     static isAnagram(string1, string2) {
         let string1Arr = string1.toString().split("").sort();
         let string2Arr = string2.toString().split("").sort();
-        if (JSON.stringify(string1Arr) == JSON.stringify(string2Arr)) {
-            return true;
-        }
-        return false;
+        return (JSON.stringify(string1Arr) === JSON.stringify(string2Arr)) ? true :  false;
     }
 
     /**
@@ -105,7 +102,7 @@ class Util {
      * @param {*} amount 
      */
     static vendingMachine(amount) {
-        let notes = [1000, 500, 100, 50, 10, 5, 2, 1];
+        const notes = [1000, 500, 100, 50, 10, 5, 2, 1];
         let i = 0;
         let noOfNotes = 0;
         for (i = 0; i < notes.length; i++) {
